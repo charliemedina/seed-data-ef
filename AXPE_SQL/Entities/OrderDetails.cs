@@ -6,7 +6,7 @@ namespace AXPE_SQL.Entities
     {
         public Guid OrderDetailsId { get; set; }
 
-        public string UnitPrice { get; set; }
+        public int UnitPrice { get; set; }
 
         public int Quantity { get; set; }
 

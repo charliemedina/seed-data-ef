@@ -9,7 +9,7 @@ namespace AXPE_SQL.Entities
 
         public string ProductName { get; set; }
 
-        public string QuantiryPerUnit { get; set; }
+        public int QuantiryPerUnit { get; set; }
 
         public int UnitPrice { get; set; }
 

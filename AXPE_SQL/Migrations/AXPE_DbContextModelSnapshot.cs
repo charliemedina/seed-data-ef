@@ -37,6 +37,22 @@ namespace AXPE_SQL.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = new Guid("2b3a3bb2-07ca-4e5a-b73d-b6ce951ef264"),
+                            CategoryName = "NewName1",
+                            Description = "Description1",
+                            Picture = "Picture1"
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("2dff1d99-c6b7-46b3-8121-2cddb7da7e6f"),
+                            CategoryName = "NewName2",
+                            Description = "Description2",
+                            Picture = "Picture2"
+                        });
                 });
 
             modelBuilder.Entity("AXPE_SQL.Entities.Customer", b =>

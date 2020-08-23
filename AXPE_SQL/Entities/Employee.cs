@@ -25,7 +25,7 @@ namespace AXPE_SQL.Entities
 
         public string Region { get; set; }
 
-        public int PostalCode { get; set; }
+        public string PostalCode { get; set; }
 
         public string Country { get; set; }
 

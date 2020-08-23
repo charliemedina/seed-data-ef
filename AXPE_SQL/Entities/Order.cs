@@ -25,7 +25,7 @@ namespace AXPE_SQL.Entities
 
         public string ShipRegion { get; set; }
         
-        public int ShipPostalCode { get; set; }
+        public string ShipPostalCode { get; set; }
 
         public string ShipCountry { get; set; }
 

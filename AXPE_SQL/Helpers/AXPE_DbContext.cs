@@ -1,9 +1,6 @@
 ﻿using AXPE_SQL.Entities;
+using AXPE_SQL.Entities.Configuration;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AXPE_SQL.Helpers
 {
@@ -11,6 +8,11 @@ namespace AXPE_SQL.Helpers
     {
         public AXPE_DbContext(DbContextOptions<AXPE_DbContext> options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         }
 
         public DbSet<Supplier> Suppliers { get; set; }

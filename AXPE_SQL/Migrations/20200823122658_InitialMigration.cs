@@ -206,6 +206,16 @@ namespace AXPE_SQL.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName", "Description", "Picture" },
+                values: new object[] { new Guid("2b3a3bb2-07ca-4e5a-b73d-b6ce951ef264"), "NewName1", "Description1", "Picture1" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName", "Description", "Picture" },
+                values: new object[] { new Guid("2dff1d99-c6b7-46b3-8121-2cddb7da7e6f"), "NewName2", "Description2", "Picture2" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderId",
                 table: "OrderDetails",
