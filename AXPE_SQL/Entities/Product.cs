@@ -5,7 +5,7 @@ namespace AXPE_SQL.Entities
 {
     public class Product
     {
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
 
         public string ProductName { get; set; }
 
@@ -21,10 +21,10 @@ namespace AXPE_SQL.Entities
 
         public bool Discontinued { get; set; }
 
-        public Guid SupplierId { get; set; }
+        public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
 
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
 
         public ICollection<OrderDetails> Orders { get; set; }

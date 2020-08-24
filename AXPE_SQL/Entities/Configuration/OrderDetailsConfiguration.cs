@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AXPE_SQL.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace AXPE_SQL.Entities.Configuration
 {
@@ -8,12 +8,8 @@ namespace AXPE_SQL.Entities.Configuration
     {
         public void Configure(EntityTypeBuilder<OrderDetails> builder)
         {
-            builder.HasData
-            (
-                new OrderDetails
-                {
-                }
-            );
+            var orderDetails = FakeGenerator.GetOrderDetails;
+            builder.HasData(orderDetails);
         }
     }
 }

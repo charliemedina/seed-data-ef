@@ -5,7 +5,7 @@ namespace AXPE_SQL.Entities
 {
     public class Order
     {
-        public Guid OrderId { get; set; }
+        public int OrderId { get; set; }
 
         public DateTime OrderDate { get; set; }
 
@@ -29,13 +29,13 @@ namespace AXPE_SQL.Entities
 
         public string ShipCountry { get; set; }
 
-        public Guid ShipperId { get; set; }
+        public int ShipperId { get; set; }
         public Shipper Shipper { get; set; }
 
-        public Guid CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
-        public Guid EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
         public ICollection<OrderDetails> OrdersDetails { get; set; }

@@ -5,7 +5,7 @@ namespace AXPE_SQL.Entities
 {
     public class Employee
     {
-        public Guid EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
 
         public string LastName { get; set; }
 

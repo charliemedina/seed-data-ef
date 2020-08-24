@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AXPE_SQL.Entities
 {
     public class Supplier
     {
-        public Guid SupplierId { get; set; }
+        public int SupplierId { get; set; }
 
         public string CompanyName { get; set; }
 

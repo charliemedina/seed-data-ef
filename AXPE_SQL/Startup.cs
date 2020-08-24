@@ -40,7 +40,7 @@ namespace AXPE_SQL
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync("The databases were created successfully!");
                 });
             });
         }

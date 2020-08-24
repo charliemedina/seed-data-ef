@@ -13,6 +13,13 @@ namespace AXPE_SQL.Helpers
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new ShipperConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration()); 
+            modelBuilder.ApplyConfiguration(new SupplierConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderDetailsConfiguration());
         }
 
         public DbSet<Supplier> Suppliers { get; set; }

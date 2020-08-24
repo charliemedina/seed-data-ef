@@ -5,7 +5,7 @@ namespace AXPE_SQL.Entities
 {
     public class Customer
     {
-        public Guid CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
         public string CompanyName { get; set; }
 

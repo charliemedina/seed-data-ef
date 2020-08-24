@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AXPE_SQL.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace AXPE_SQL.Entities.Configuration
 {
@@ -8,23 +8,8 @@ namespace AXPE_SQL.Entities.Configuration
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasData
-            (
-                new Category
-                {
-                    CategoryId = Guid.NewGuid(),
-                    CategoryName = "NewName4",
-                    Description = "Description1",
-                    Picture = "Picture1"
-                },
-                new Category
-                {
-                    CategoryId = Guid.NewGuid(),
-                    CategoryName = "NewName5",
-                    Description = "Description2",
-                    Picture = "Picture2"
-                }
-            );
+            var categories = FakeGenerator.GetCategories;
+            builder.HasData(categories);
         }
     }
 }
