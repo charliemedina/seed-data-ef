@@ -1,5 +1,6 @@
 ﻿using AXPE_SQL.Entities;
 using Bogus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,28 +16,28 @@ namespace AXPE_SQL.Helpers
         private const int NumOfEmployees = 50;
         private const int NumOfCustomers = 25;
 
-        public static IEnumerable<Category> GetCategories => 
+        public static IEnumerable<Category> GetCategories =>
             Enumerable.Range(1, NumOfCategories).Select(_ => CreateCategory(_)).ToList();
 
-        public static IEnumerable<Shipper> GetShippers => 
+        public static IEnumerable<Shipper> GetShippers =>
             Enumerable.Range(1, NumOfShippers).Select(_ => CreateShipper(_)).ToList();
 
-        public static IEnumerable<Supplier> GetSuppliers => 
+        public static IEnumerable<Supplier> GetSuppliers =>
             Enumerable.Range(1, NumOfSuppliers).Select(_ => CreateSupplier(_)).ToList();
 
-        public static IEnumerable<Customer> GetCustomers => 
+        public static IEnumerable<Customer> GetCustomers =>
             Enumerable.Range(1, NumOfCustomers).Select(_ => CreateCutomer(_)).ToList();
 
-        public static IEnumerable<Employee> GetEmployees => 
+        public static IEnumerable<Employee> GetEmployees =>
             Enumerable.Range(1, NumOfEmployees).Select(_ => CreateEmployee(_)).ToList();
 
-        public static IEnumerable<Product> GetProducts => 
+        public static IEnumerable<Product> GetProducts =>
             Enumerable.Range(1, NumOfProducts).Select(_ => CreateProduct(_)).ToList();
 
-        public static IEnumerable<Order> GetOrders => 
+        public static IEnumerable<Order> GetOrders =>
             Enumerable.Range(1, NumOfOrders).Select(_ => CreateOrder(_)).ToList();
 
-        public static IEnumerable<OrderDetails> GetOrderDetails => 
+        public static IEnumerable<OrderDetails> GetOrderDetails =>
             Enumerable.Range(1, NumOfOrders).Select(_ => CreateOrderDetails(_)).ToList();
 
         private static Category CreateCategory(int index)
@@ -133,8 +134,7 @@ namespace AXPE_SQL.Helpers
                 .RuleFor(u => u.UnitsInStock, (f, u) => f.Random.Number(200))
                 .RuleFor(u => u.ProductName, (f, u) => f.Commerce.ProductName())
                 .RuleFor(u => u.SupplierId, (f, u) => f.Random.Number(1, NumOfSuppliers))
-                .RuleFor(u => u.CategoryId, (f, u) => f.Random.Number(1, NumOfCategories))
-                ;
+                .RuleFor(u => u.CategoryId, (f, u) => f.Random.Number(1, NumOfCategories));
 
             return shipper.Generate();
         }
@@ -143,11 +143,10 @@ namespace AXPE_SQL.Helpers
         {
             var shipper = new Faker<OrderDetails>()
                 .RuleFor(u => u.OrderDetailsId, f => index)
-                .RuleFor(u => u.Quantity, (f, u) => f.Random.Number())
+                .RuleFor(u => u.Quantity, (f, u) => f.Random.Number(1, 100))
                 .RuleFor(u => u.UnitPrice, (f, u) => f.Random.Number(1000))
                 .RuleFor(u => u.ProductId, (f, u) => f.Random.Number(1, NumOfProducts))
-                .RuleFor(u => u.OrderId, (f, u) => f.Random.Number(1, NumOfOrders))
-                ;
+                .RuleFor(u => u.OrderId, (f, u) => f.Random.Number(1, NumOfOrders));
 
             return shipper.Generate();
         }
@@ -163,14 +162,13 @@ namespace AXPE_SQL.Helpers
                 .RuleFor(u => u.ShipCity, (f, u) => f.Address.City())
                 .RuleFor(u => u.ShipCountry, (f, u) => f.Address.Country())
                 .RuleFor(u => u.ShipName, (f, u) => f.Person.FullName)
-                .RuleFor(u => u.ShippedDate, (f, u) => f.Date.Recent())
+                .RuleFor(u => u.ShippedDate, (f, u) => f.Date.Between(DateTime.Now.AddDays(-10), DateTime.Now.AddDays(10)))
                 .RuleFor(u => u.ShipPostalCode, (f, u) => f.Address.ZipCode())
                 .RuleFor(u => u.ShipRegion, (f, u) => f.Address.State())
                 .RuleFor(u => u.ShipVia, (f, u) => f.Address.StreetName())
                 .RuleFor(u => u.ShipperId, (f, u) => f.Random.Number(1, NumOfShippers))
                 .RuleFor(u => u.CustomerId, (f, u) => f.Random.Number(1, NumOfCustomers))
-                .RuleFor(u => u.EmployeeId, (f, u) => f.Random.Number(1, NumOfEmployees))
-                ;
+                .RuleFor(u => u.EmployeeId, (f, u) => f.Random.Number(1, NumOfEmployees));
 
             return shipper.Generate();
         }
